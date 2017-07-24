@@ -432,7 +432,10 @@ def main(dirs):
                             for i in range(outputmaps):
                                 fully_connected_weights = np.reshape(fully_connected_weights, [cols,rows])
                                 act = fully_connected_weights[j,featurespixels*(i):featurespixels+featurespixels*(i)] 
-                                actback = np.reshape(act, (featureside,featureside)) 
+                                if(featureside == 1):
+                                    actback = act
+                                else:
+                                    actback = np.reshape(act, (featureside,featureside)) 
                                 actfix = (actback) 
                                 fully_connected_weights[j,featurespixels*(i):featurespixels+featurespixels*(i)] = np.reshape(actfix,  featurespixels)            
                         fully_connected_weights = np.transpose(fully_connected_weights) 

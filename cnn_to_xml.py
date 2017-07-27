@@ -368,7 +368,7 @@ def main(dirs):
                 net_string += '\t\t<strides>'+str(layer.pooling_param.stride)+'</strides>\n'
                 net_string += '\t\t<pad>'+str(layer.pooling_param.pad)+'</pad>\n'   
             elif(type_l == 'ip' or type_l == 'o'): # fully connected or output
-                next_layer = nets[this_net].layer[count_lay]
+                next_layer = nets[this_net].layer[count_lay-1]
                 if ( next_layer.type == 'ReLU' ):
                     act_func = str.lower(str(next_layer.type))                               
                 elif( next_layer.type == 'Sigmoid' ):
